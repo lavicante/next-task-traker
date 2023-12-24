@@ -4,17 +4,14 @@ import "easymde/dist/easymde.min.css";
 import { TextField, Button, Callout, Text } from "@radix-ui/themes";
 import React, { useState } from "react";
 
-import dynamic from "next/dynamic";
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  ssr: false,
-});
+import SimpleMDE from "react-simplemde-editor";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { MdErrorOutline } from "react-icons/md";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { createIssueSchema } from "@/app/createIssueSchema";
+import { createIssueSchema } from "@/app/schemas/createIssueSchema";
 import { ErrorMessage } from "@/app/components/ErrorMessage";
 import { Spinner } from "@/app/components/Spinner";
 

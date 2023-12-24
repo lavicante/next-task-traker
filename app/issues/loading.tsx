@@ -1,24 +1,13 @@
+import { Table } from "@radix-ui/themes";
 import React from "react";
-import { Button, Table, Badge } from "@radix-ui/themes";
-import Link from "next/link";
-import prisma from "@/prisma/client";
 import { IssuesBadge } from "../components/IssuesBadge";
-import delay from "delay";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { IssueToolbar } from "./IssueToolbar";
 
-const options: Intl.DateTimeFormatOptions = {
-  year: "numeric",
-  month: "numeric",
-  day: "numeric",
-  hour: "numeric",
-  minute: "numeric",
-};
+const mockIssues = [1, 2, 3, 4, 5];
 
-const IssuesPage = async () => {
-  const issues = await prisma.issue.findMany();
-  await delay(2000);
-
-  console.log(111);
+const LoadingIssuesPage = () => {
   return (
     <div>
       <IssueToolbar />
@@ -35,19 +24,21 @@ const IssuesPage = async () => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {issues.map((issue) => (
-            <Table.Row key={issue.id}>
+          {mockIssues.map((issue) => (
+            <Table.Row key={issue}>
               <Table.Cell>
-                <div className="mb-1 md:mb-0">{issue.title}</div>
+                <div className="mb-1 md:mb-0">
+                  <Skeleton />
+                </div>
                 <div className="block md:hidden">
-                  <IssuesBadge status={issue.status} />
+                  <Skeleton />
                 </div>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                <IssuesBadge status={issue.status} />
+                <Skeleton />
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                {issue.createdAt.toLocaleDateString("ru", options)}
+                <Skeleton />
               </Table.Cell>
             </Table.Row>
           ))}
@@ -57,6 +48,4 @@ const IssuesPage = async () => {
   );
 };
 
-export const dynamic = "force-dynamic";
-
-export default IssuesPage;
+export default LoadingIssuesPage;
