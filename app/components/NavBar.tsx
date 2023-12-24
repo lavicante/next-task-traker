@@ -21,7 +21,7 @@ const NavBar = () => {
   const currentPath = usePathname();
 
   return (
-    <nav className="flex space-x-6 border-b mb-5 px-5 h-14 items-center">
+    <nav className="flex space-x-6 border-b mb-5 px-5 h-14 items-center sticky top-0 bg-white">
       <Link href="/">
         <FaBug />
       </Link>
