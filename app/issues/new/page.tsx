@@ -71,7 +71,7 @@ const NewIssuePage = () => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button disabled={loading}>
+        <Button disabled={loading} className="cursor-pointer">
           Submit new issue
           {loading && <Spinner />}
         </Button>
