@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, Table, Badge } from "@radix-ui/themes";
-import Link from "next/link";
 import prisma from "@/prisma/client";
 import { IssuesBadge } from "../components/IssuesBadge";
 import delay from "delay";
 import { IssueToolbar } from "./IssueToolbar";
+import { Link } from "../components/Link";
 
 const options: Intl.DateTimeFormatOptions = {
   year: "numeric",
